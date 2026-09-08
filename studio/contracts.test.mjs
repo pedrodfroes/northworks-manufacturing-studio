@@ -1,0 +1,31 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {projectScenario,configurationKey,snapshot} from './scenarios.js';
+import {schedule,tankProfile} from './engine.js';
+import {adjacent,sequence} from './navigation.js';
+import {decisionState} from './decision-context.js';
+import {time} from './model.js';
+import {validateScenario,inputDifferences} from './scenario-records.js';
+import {skillProfile} from './engine.js';
+
+for(const id of ['liquid','discrete','mro'])test(`${id}: projection, finite capacity and skill reservations`,()=>{
+ const c={referenceCase:id,calendar:{hours:8},scenarioInputs:{people:1,materialReady:26}},m=projectScenario(c),r=schedule(m);
+ assert.equal(m.calendar.hours,8);assert.equal(m.caseId,id);assert.equal(m.tank.enabled,id==='liquid');
+ assert.ok(r.ops.find(o=>o.key==='WO-001:0').start>=26);
+ const skilled=r.ops.filter(o=>m.orders.find(x=>x.id===o.order).operations[o.index].skill).sort((a,b)=>a.start-b.start);
+ for(let i=1;i<skilled.length;i++)assert.ok(skilled[i].start>=skilled[i-1].processEnd);
+ for(const op of r.ops)assert.ok(op.processEnd<=Math.floor(op.start/24)*24+8+1e-8);
+ assert.deepEqual(c,{referenceCase:id,calendar:{hours:8},scenarioInputs:{people:1,materialReady:26}});
+});
+test('a receipt change changes the consuming operation',()=>{const m=projectScenario({},'discrete'),a=schedule(m);m.materials[0].ready=120;const b=schedule(m);assert.ok(b.ops.find(o=>o.key==='WO-001:0').start>=120);assert.ok(b.orders.find(o=>o.id==='WO-001').completion>a.orders.find(o=>o.id==='WO-001').completion);});
+test('tank trial conserves volume and moves with operations',()=>{const m=projectScenario({},'liquid'),a=schedule(m),before=tankProfile(m,a,'A');m.moves['WO-001:0']={order:'WO-001',resource:m.resources[0].id,start:80};const b=schedule(m),after=tankProfile(m,b,'A');assert.notDeepEqual(before,after);assert.ok(Math.abs(after.at(-1).value)<1e-8);});
+test('all 51 screens occur exactly once in navigation',()=>{const inventory=JSON.parse(readFileSync(new URL('./inventory.json',import.meta.url)));assert.equal(sequence.length,51);assert.equal(new Set(sequence).size,51);assert.deepEqual([...sequence].sort(),inventory.steps.map(s=>s.id).sort());assert.equal(adjacent('supplies',1),'tank-intro');assert.equal(adjacent('handoff',1),null);});
+test('reviews survive navigation and become stale after an input change',()=>{const s={calendar:{hours:8},i:0,view:'flow'};s.decisionEvidence={calendar:{key:configurationKey(s),owner:'Planner'}};assert.equal(decisionState(s,'calendar'),'Reviewed');s.i=20;s.view='cockpit';assert.equal(decisionState(s,'calendar'),'Reviewed');s.calendar.hours=16;assert.equal(decisionState(s,'calendar'),'Needs re-review');});
+test('comparison snapshots retain inputs and results independently',()=>{const m=projectScenario(),r=schedule(m),saved=snapshot(m,r,'Original');m.calendar.hours=8;r.ops[0].start=99;assert.equal(saved.model.calendar.hours,16);assert.notEqual(saved.result.ops[0].start,99);assert.equal(saved.revision,1);});
+test('time formatting carries rounded minutes across midnight',()=>{assert.equal(time(17.999),'D2 00:00');assert.equal(time(0),'D1 06:00');});
+test('scenario import accepts a snapshot and rejects invalid references',()=>{const m=projectScenario(),saved=snapshot(m,schedule(m),'Portable');assert.deepEqual(validateScenario(saved),m);saved.model.orders[0].operations[0].group='unknown';assert.throws(()=>validateScenario(saved),/eligible resource/);});
+test('scenario import rejects invalid headcounts and markup IDs',()=>{const m=projectScenario();m.skills[0].count=0;assert.throws(()=>validateScenario(m),/headcount/);m.skills[0].count=1;m.resources[0].id='x"><script>';assert.throws(()=>validateScenario(m),/IDs/);});
+test('comparison explains changed inputs without revision noise',()=>{const a=projectScenario(),b=structuredClone(a);b.revision=3;b.calendar.hours=8;assert.deepEqual(inputDifferences(a,b),[{field:'calendar / hours',before:16,after:8}]);});
+test('staffing curves obey available headcount and end at zero',()=>{const m=projectScenario({scenarioInputs:{people:1}},'liquid'),r=schedule(m),points=skillProfile(m,r,'specialist');assert.ok(points.every(p=>p.demand>=0&&p.demand<=1));assert.equal(points.at(-1).demand,0);});
+test('configured resource names and route durations reach the engine',()=>{const m=projectScenario({scenarioInputs:{resourceNames:{'asset-1':'Mixing room A'},routeHours:{0:5}}});assert.equal(m.resources[0].name,'Mixing room A');const r=schedule(m);assert.ok(r.ops.filter(o=>o.index===0).every(o=>o.processEnd-o.start===5));});

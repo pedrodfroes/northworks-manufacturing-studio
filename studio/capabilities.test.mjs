@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {capabilities,selectedCapabilities,setCapability,areaApplies,stepApplies} from './capabilities.js';
+import {sequence} from './navigation.js';
+test('one capability catalog preserves existing scope choices',()=>{assert.equal(capabilities.length,9);assert.equal(new Set(capabilities.map(c=>c.id)).size,9);const s={scope:'aps-ds',masterPlanning:{enabled:true},dispatch:{enabled:false},businessModules:{qms:{enabled:true}}};assert.deepEqual(selectedCapabilities(s).map(c=>c.id),['master','aps','qms']);});
+test('selecting a capability changes no other capability or retained input',()=>{const s={scope:'aps-ds',businessModules:{mrp:{stock:123}}};setCapability(s,'mrp',true);assert.equal(s.scope,'aps-ds');assert.equal(s.businessModules.mrp.stock,123);setCapability(s,'aps',false);assert.deepEqual(selectedCapabilities(s).map(c=>c.id),['mrp']);setCapability(s,'mrp',false);assert.equal(s.businessModules.mrp.stock,123);});
+test('quality-only journey includes its configuration and shared data but excludes APS',()=>{const s={businessModules:{qms:{enabled:true}}},route=sequence.filter(id=>stepApplies(id,s));assert.ok(route.includes('qms-design'));assert.ok(route.includes('qms'));assert.ok(route.includes('attr-quality'));assert.ok(!route.includes('calendar'));assert.ok(!route.includes('sop'));assert.ok(!route.includes('mrp-design'));assert.equal(areaApplies('validation',s),true);assert.equal(areaApplies('plant',s),false);});
+test('no selected capabilities still permits scope and shared handoff',()=>{assert.deepEqual(selectedCapabilities({}),[]);assert.equal(stepApplies('scope',{}),true);assert.equal(stepApplies('handoff',{}),true);assert.equal(stepApplies('sop-design',{}),false);});

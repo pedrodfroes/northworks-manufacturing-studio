@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ImplementationOS - Digital Manufacturing Stack</title>
+    <link rel="stylesheet" href="./styles.css?v=17" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script src="./packs.js?v=17" defer></script>
+    <script src="./model.js?v=17" defer></script>
+    <script src="./util.js?v=17" defer></script>
+    <script src="./data.js?v=17" defer></script>
+    <script src="./state.js?v=17" defer></script>
+    <script src="./derive.js?v=17" defer></script>
+    <script src="./generator.js?v=17" defer></script>
+    <script src="./tutorial.js?v=17" defer></script>
+    <script src="./steps.js?v=17" defer></script>
+    <script src="./scheduler.js?v=17" defer></script>
+    <script src="./secondary.js?v=17" defer></script>
+    <script src="./sandbox.js?v=17" defer></script>
+    <link rel="stylesheet" href="./sandbox.css?v=17" />
+    <script src="./industry-examples.js?v=17" defer></script>
+    <script src="./visual-story.js?v=17" defer></script>
+    <link rel="stylesheet" href="./visual-story.css?v=17" />
+    <script src="./app.js?v=17" defer></script>
+  <script src="studio/config-bridge.js?v=17" defer></script><link rel="stylesheet" href="studio/config-frame.css?v=17"><link rel="stylesheet" href="chromatics.css?v=1"></head>
+  <body class="installer-body">
+    <main class="installer" id="installer">
+      <aside class="rail" aria-label="Setup progress">
+        <div class="rail-brand">
+          <p class="eyebrow">ImplementationOS</p>
+          <strong>Digital Manufacturing stack</strong>
+        </div>
+        <nav class="rail-steps" id="railSteps" aria-label="Steps"></nav>
+        <div class="rail-foot">
+          <div class="rail-readiness" id="railReadiness"></div>
+        </div>
+      </aside>
+
+      <section class="stage-wrap">
+        <header class="stage-top">
+          <span class="stage-count" id="stageCount"></span>
+          <div class="stage-top-actions">
+            <button class="ghost-btn" id="sandboxToggle" type="button"><span>APS sandbox</span></button>
+            <button class="ghost-btn" id="cockpitToggle" type="button" title="Configuration cockpit">
+              <i data-lucide="layout-grid"></i>
+              <span>Cockpit</span>
+            </button>
+            <button class="ghost-btn" id="blueprintToggle" type="button" title="Open blueprint artifact" aria-pressed="false">
+              <i data-lucide="panel-right"></i>
+              <span>Blueprint</span>
+            </button>
+            <button class="ghost-btn" id="tutorialToggle" type="button" title="Start guided tutorial">
+              <i data-lucide="sparkles"></i>
+              <span>Tutorial</span>
+            </button>
+            <button class="ghost-btn" id="restartBtn" type="button" title="Start over">
+              <i data-lucide="rotate-ccw"></i>
+              <span>Start over</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="stage-body" id="stageBody" aria-live="polite"></div>
+
+        <footer class="stage-foot" id="stageFoot">
+          <button class="ghost-btn" id="backBtn" type="button">
+            <i data-lucide="arrow-left"></i>
+            <span>Back</span>
+          </button>
+          <div class="foot-right">
+            <span class="foot-hint" id="footHint"></span>
+            <button class="cta" id="nextBtn" type="button">
+              <span id="nextLabel">Continue</span>
+              <i data-lucide="arrow-right"></i>
+            </button>
+          </div>
+        </footer>
+      </section>
+
+      <aside class="blueprint" id="blueprintPanel" aria-label="Implementation blueprint artifact"></aside>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,518 @@
+{
+  "steps": [
+    {
+      "id": "welcome",
+      "name": "Welcome",
+      "phase": "Start",
+      "title": "Let's configure your Digital Manufacturing stack.",
+      "hasGate": false,
+      "hasVisual": false
+    },
+    {
+      "id": "scope",
+      "name": "Implementation intent",
+      "phase": "Intent",
+      "title": "What kind of implementation are we configuring?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "architecture",
+      "name": "System landscape",
+      "phase": "Landscape",
+      "title": "Which systems participate in this implementation?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "industry",
+      "name": "Industry context",
+      "phase": "Characterize",
+      "title": "Which industry contexts does this implementation cover?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "archetype",
+      "name": "Archetype",
+      "phase": "Characterize",
+      "title": "What are you implementing?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "dialect",
+      "name": "Dialect",
+      "phase": "Characterize",
+      "title": "Confirm the planning dialect.",
+      "hasGate": false,
+      "hasVisual": false
+    },
+    {
+      "id": "migration",
+      "name": "Migration",
+      "phase": "Characterize",
+      "title": "Is an S/4 migration on the roadmap?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "master-purpose",
+      "name": "Master purpose",
+      "phase": "Plan",
+      "title": "Should Master Planning be part of the implementation?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "master-policy",
+      "name": "Master policies",
+      "phase": "Plan",
+      "title": "What makes the master plan feasible?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "master-handoff",
+      "name": "Master handoff",
+      "phase": "Plan",
+      "title": "What should Master Planning hand downstream?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "calendar-gantt-intro",
+      "name": "Capacity basics",
+      "phase": "Plant",
+      "title": "Capacity is only the time a resource is actually open.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "calendar",
+      "name": "Calendars & capacity",
+      "phase": "Plant",
+      "title": "Where does available capacity really come from?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "calendar-gantt-preview",
+      "name": "Capacity preview",
+      "phase": "Plant",
+      "title": "Here is the capacity your calendar describes.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "bottleneck-intro",
+      "name": "Bottleneck basics",
+      "phase": "Plant",
+      "title": "The bottleneck is the resource everything waits on.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "constraint",
+      "name": "Bottleneck",
+      "phase": "Plant",
+      "title": "Where is the bottleneck -- the capacity-constrained resource?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "bottleneck-preview",
+      "name": "Bottleneck preview",
+      "phase": "Plant",
+      "title": "What that bottleneck looks like on the schedule.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "areas",
+      "name": "Department taxonomy",
+      "phase": "Model",
+      "title": "Which production supply area types belong in the representative model?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "workcenters",
+      "name": "Resource taxonomy",
+      "phase": "Model",
+      "title": "Which resource types should the generator represent?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "tank-intro",
+      "name": "Tank basics",
+      "phase": "Model",
+      "title": "A tank's usable capacity changes by the hour.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "volume-storage",
+      "name": "Volume storage",
+      "phase": "Model",
+      "title": "Do tanks or other volume assets shape feasibility?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "tank-preview",
+      "name": "Tank preview",
+      "phase": "Model",
+      "title": "What your tank model looks like over a cycle.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "attr-classification",
+      "name": "Classification",
+      "phase": "Model",
+      "title": "What classification & grouping does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "attr-descriptor",
+      "name": "Descriptive",
+      "phase": "Model",
+      "title": "What descriptive attributes does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "attr-planning",
+      "name": "Planning fields",
+      "phase": "Model",
+      "title": "What planning master fields does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "attr-variant",
+      "name": "Variants",
+      "phase": "Model",
+      "title": "What variant / configuration does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "attr-batchSerial",
+      "name": "Batch / serial",
+      "phase": "Model",
+      "title": "What batch / serial attributes does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "attr-quality",
+      "name": "Quality params",
+      "phase": "Model",
+      "title": "What quality / process parameters does your material carry?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "transition-intro",
+      "name": "Transition basics",
+      "phase": "Model",
+      "title": "Between runs, the line loses time it never gets back.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "transitions",
+      "name": "Setup & cleaning",
+      "phase": "Model",
+      "title": "How do setups, changeovers, and cleaning behave?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "transition-preview",
+      "name": "Transition preview",
+      "phase": "Model",
+      "title": "What your transitions cost on the schedule.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "bom",
+      "name": "BOM profile",
+      "phase": "Model",
+      "title": "How does the product structure reach planning?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "supplies",
+      "name": "Critical supplies",
+      "phase": "Model",
+      "title": "Which supplies can stop the schedule?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "workforce-intro",
+      "name": "Workforce basics",
+      "phase": "Model",
+      "title": "Machines don't run themselves -- skilled people gate them.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "workforce",
+      "name": "Workforce planning",
+      "phase": "Model",
+      "title": "How much workforce planning does this need?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "workforce-preview",
+      "name": "Workforce preview",
+      "phase": "Model",
+      "title": "How your workforce model shapes the schedule.",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "dispatch-purpose",
+      "name": "Dispatch intent",
+      "phase": "Dispatch & Execute",
+      "title": "How should planned work reach the floor?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "dispatch-control",
+      "name": "Dispatch rules",
+      "phase": "Dispatch & Execute",
+      "title": "What governs the dispatch list?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "execution",
+      "name": "Execution feedback",
+      "phase": "Dispatch & Execute",
+      "title": "How does actual execution return to planning?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "variant",
+      "name": "Try a variant",
+      "phase": "Validate",
+      "title": "Want to try a variant before committing?",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "readiness",
+      "name": "Readiness",
+      "phase": "Validate",
+      "title": "Your readiness so far.",
+      "hasGate": false,
+      "hasVisual": false
+    },
+    {
+      "id": "handoff",
+      "name": "Handoff",
+      "phase": "Handoff",
+      "title": "Hand off to the support organization.",
+      "hasGate": false,
+      "hasVisual": false
+    },
+    {
+      "id": "sop",
+      "name": "S&OP",
+      "phase": "S&OP",
+      "title": "Balance demand and supply",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "mrp",
+      "name": "MRP",
+      "phase": "MRP",
+      "title": "Net requirements into planned supply",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "plm",
+      "name": "PLM",
+      "phase": "PLM",
+      "title": "Control the product revision",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "lims",
+      "name": "LIMS",
+      "phase": "LIMS",
+      "title": "Test a lot against its specification",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "qms",
+      "name": "QMS",
+      "phase": "QMS",
+      "title": "Decide whether a lot can be used",
+      "hasGate": false,
+      "hasVisual": true
+    },
+    {
+      "id": "sop-design",
+      "name": "S&OP configuration",
+      "phase": "S&OP",
+      "title": "S&OP implementation contract",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "mrp-design",
+      "name": "MRP configuration",
+      "phase": "MRP",
+      "title": "MRP implementation contract",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "plm-design",
+      "name": "PLM configuration",
+      "phase": "PLM",
+      "title": "PLM implementation contract",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "lims-design",
+      "name": "LIMS configuration",
+      "phase": "LIMS",
+      "title": "LIMS implementation contract",
+      "hasGate": true,
+      "hasVisual": false
+    },
+    {
+      "id": "qms-design",
+      "name": "QMS configuration",
+      "phase": "QMS",
+      "title": "QMS implementation contract",
+      "hasGate": true,
+      "hasVisual": false
+    }
+  ],
+  "stateFields": [
+    "i",
+    "max",
+    "scope",
+    "masterPlanning",
+    "industryFirst",
+    "archetypes",
+    "architecture",
+    "industry",
+    "industrySpecialty",
+    "industryContexts",
+    "erp",
+    "migration",
+    "calendar",
+    "constraint",
+    "calendarVisuals",
+    "bottleneckVisuals",
+    "tankVisuals",
+    "transitionVisuals",
+    "workforceVisuals",
+    "taxonomyMode",
+    "departmentTypes",
+    "resourceTypes",
+    "attr",
+    "transitions",
+    "bom",
+    "volumeStorage",
+    "supplies",
+    "workforce",
+    "dispatch",
+    "execution",
+    "variant",
+    "exportFormat",
+    "blueprintOpen",
+    "coverSeen",
+    "view",
+    "tutorial",
+    "done"
+  ],
+  "attributes": [
+    {
+      "id": "classification",
+      "dialectKey": "classification",
+      "icon": "tags",
+      "short": "Classification",
+      "name": "Classification & grouping",
+      "role": "Group products into classes or categories.",
+      "aps": "Drives changeover families, campaign grouping, and reporting dimensions."
+    },
+    {
+      "id": "descriptor",
+      "dialectKey": "descriptor",
+      "icon": "list",
+      "short": "Descriptive",
+      "name": "Descriptive attributes",
+      "role": "Defined traits carried as values on the master record.",
+      "aps": "Feed sequencing rules, compatibility, and constraint logic."
+    },
+    {
+      "id": "planning",
+      "dialectKey": "planning",
+      "icon": "sliders-horizontal",
+      "short": "Planning fields",
+      "name": "Planning master fields",
+      "role": "Lot size, safety stock, lead time, scrap, strategy.",
+      "aps": "Set lot-sizing, buffers, and horizons directly in the schedule."
+    },
+    {
+      "id": "variant",
+      "dialectKey": "variant",
+      "icon": "git-fork",
+      "short": "Variants",
+      "name": "Variant / configuration",
+      "role": "Configurable options that resolve a concrete product.",
+      "aps": "Late differentiation and configured BOM / routing selection."
+    },
+    {
+      "id": "batchSerial",
+      "dialectKey": "batchSerial",
+      "icon": "scan-barcode",
+      "short": "Batch / serial",
+      "name": "Batch / serial attributes",
+      "role": "Values specific to a lot, batch, or serial instance.",
+      "aps": "Potency, expiry, and grade constrain which supply is usable."
+    },
+    {
+      "id": "quality",
+      "dialectKey": "quality",
+      "icon": "microscope",
+      "short": "Quality params",
+      "name": "Quality / process parameters",
+      "role": "Inspection characteristics, CPP, CQA, and spec limits.",
+      "aps": "Release gates and process windows that bound feasibility."
+    }
+  ],
+  "counts": {
+    "industries": 14,
+    "archetypes": 16,
+    "resourceTypes": 8,
+    "departmentTypes": 8
+  },
+  "exportFormats": [
+    "generic",
+    "opcenter",
+    "planettogether"
+  ]
+}

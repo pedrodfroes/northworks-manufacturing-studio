@@ -1,0 +1,6 @@
+{
+  "name":"manufacturing-model-studio",
+  "private":true,
+  "type":"module",
+  "scripts":{"test":"node --test studio/*.test.mjs", "test:legacy":"node scheduler.test.cjs && node clean.test.cjs && node clean-rule.test.cjs"}
+}
