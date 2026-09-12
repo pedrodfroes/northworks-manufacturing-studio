@@ -24,6 +24,7 @@ button.primary:hover,.primary:hover,#next:hover{background:#19479f}
 .flow{background:#eef1f5;border-left:3px solid var(--ui-action)}
 
 /* Editorial direction: ink, paper and electric violet. */
+.workspace-contract{border:1px solid var(--ui-line);background:#fff;padding:16px 20px;margin:20px 0;border-radius:5px}.workspace-contract>summary{font-size:16px;cursor:pointer;font-weight:700}.workspace-contract-status{font-size:12px;color:var(--ui-muted);margin:0 0 8px}.workspace-trial .decision-context{margin-top:0}.workspace-trial .case-outcomes{gap:16px}.workspace-trial .case-outcomes>div{border-left:3px solid var(--ui-action);background:#f2eefc;padding:16px}.workspace-trial .case-outcomes strong{font-size:26px!important}.workspace-trial .contract-fields{margin-top:22px}.workspace-contract .requirements-grid{margin-top:18px}
 .project-setup-strip{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;margin:0 0 26px;border-top:1px solid var(--ui-line);border-bottom:1px solid var(--ui-line)}.project-setup-strip strong{display:block;font-size:20px;margin:7px 0}.project-setup-strip p{margin:0;font-size:14px;color:var(--ui-muted)}.project-setup-strip button{flex-shrink:0}@media(max-width:650px){.project-setup-strip{align-items:start;flex-direction:column}}
 :root{--ui-bg:#f2f0ed;--ui-ink:#19191f;--ui-muted:#595761;--ui-action:#6038d0;--ui-line:#d8d4df;--teal-soft:#eee8ff}
 button,input,select,textarea,.primary,.open{border-radius:5px}
