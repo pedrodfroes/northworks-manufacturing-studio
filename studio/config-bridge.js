@@ -17,6 +17,9 @@ window.addEventListener('DOMContentLoaded',async()=>{
  const {registerModules,moduleBody}=await import('./business-modules.js?v=17');
  registerModules({state,steps,render:()=>render()});
  registerDomainDesign({state,steps,render:()=>render()});
+ const {registerOwnership,ownershipComplete}=await import('./system-ownership.js');
+ registerOwnership({state,steps,render:()=>render()});
+ architectureConfigured=()=>ownershipComplete(state);
  const nextStep=(id,direction)=>{let next=adjacent(id,direction);while(next&&!stepApplies(next,state))next=adjacent(next,direction);return next;};
  const original=render;let lastStep=null;
  render=function(){

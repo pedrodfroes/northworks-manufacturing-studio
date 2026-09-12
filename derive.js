@@ -199,7 +199,8 @@ function blueprintModel() {
   push("Industry context", selectedIndustryContexts().length ? "confirmed" : null, selectedIndustryContexts().map((c) => c.specialty).join(" · "));
 
   const arch = s.architecture?.nodes;
-  if (Array.isArray(arch) && arch.length) push("System architecture", architectureConfigured() ? "confirmed" : "draft",
+  if (s.architecture?.assignments) push("Application ownership", architectureConfigured() ? "confirmed" : "draft", "Responsibility assignments captured; see implementation record");
+  else if (Array.isArray(arch) && arch.length) push("Previous system landscape", "draft",
     `${arch.length} system${arch.length === 1 ? "" : "s"} mapped`);
 
   const cal = s.calendar || {};

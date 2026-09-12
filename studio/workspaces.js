@@ -2,7 +2,7 @@
 export const workspaceAliases={welcome:'scope','calendar-gantt-intro':'calendar','calendar-gantt-preview':'calendar','bottleneck-intro':'constraint','bottleneck-preview':'constraint','tank-intro':'volume-storage','tank-preview':'volume-storage','transition-intro':'transitions','transition-preview':'transitions','workforce-intro':'workforce','workforce-preview':'workforce',sop:'sop-design',plm:'plm-design',mrp:'mrp-design',lims:'lims-design',qms:'qms-design'};
 export const workspaceId=id=>workspaceAliases[id]||id;
 export const workspaceSteps=ids=>[...new Set(ids.map(workspaceId))];
-export const workspaceNames={scope:'Project scope',calendar:'Shifts & available capacity',constraint:'Bottlenecks & delivery impact','volume-storage':'Liquid storage & flow',transitions:'Sequence & cleaning',workforce:'People & competing work','sop-design':'Demand & supply balance','plm-design':'Product revision & effectivity','mrp-design':'Requirements & planned supply','lims-design':'Laboratory evidence','qms-design':'Quality disposition'};
+export const workspaceNames={scope:'Project scope',architecture:'Application ownership',calendar:'Shifts & available capacity',constraint:'Bottlenecks & delivery impact','volume-storage':'Liquid storage & flow',transitions:'Sequence & cleaning',workforce:'People & competing work','sop-design':'Demand & supply balance','plm-design':'Product revision & effectivity','mrp-design':'Requirements & planned supply','lims-design':'Laboratory evidence','qms-design':'Quality disposition'};
 
 export function composeWorkspace({id,root,state,steps,render,moduleBody}){
  const domain=id.endsWith('-design')?id.slice(0,-7):null;

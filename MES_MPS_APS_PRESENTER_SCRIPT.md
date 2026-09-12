@@ -93,15 +93,15 @@ The [software stack overview](https://pedrodfroes.github.io/northworks-manufactu
 
 **Check:** Selecting scope records a requirement; it does not establish a live connection.
 
-## 04. Foundation — System landscape · Core
+## 04. Foundation — Application ownership · Core
 
 [Open screen](https://pedrodfroes.github.io/northworks-manufacturing-studio/index.html#topic/architecture)
 
-**Do:** Identify SAP PP-PI as the ERP process-manufacturing role; show planning, MES and shop-floor roles and open an interface disclosure.
+**Do:** Point to the capabilities carried forward from Project scope. Assign an application, an existing/new choice and an accountable owner for each responsibility; review assignments individually.
 
 **Say:**
 
-> We assign an owner to each business object and decision across the wider stack. CRM demand, approved planning versions, product revisions, process orders, execution records, laboratory results and quality decisions have different authorities. The historian supplies timestamped process evidence. One platform may fulfill several roles; each boundary still needs a clear contract.
+> We already decided what this project must support. Now we decide which actual application owns each responsibility and which team is accountable. The same application can serve several capabilities. ERP, CRM, historians and other supporting systems can be recorded as connections without changing the selected scope.
 
 **Check:** This is the proposed customer architecture. The configurator has no live SAP connection. SAP PP-PI is not SAP Process Integration middleware. Enterprise QMS and SAP QM are distinct scopes with possible overlap; agree authority per quality decision.
 
